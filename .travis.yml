@@ -1,0 +1,11 @@
+language: go
+go:
+  - 1.11.x
+before_install:
+  - go get github.com/mitchellh/gox
+  - go get github.com/tcnksm/ghr
+script:
+  - go test
+  - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
+after_success:
+  - ghr -u $GITHUB_USER -t $GITHUB_TOKEN -replace -prerelease pre-release dist/
