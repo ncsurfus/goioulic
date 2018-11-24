@@ -12,4 +12,4 @@ script:
   - go test
   - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
 after_success:
-  - ghr -u $GITHUB_USER -t $GITHUB_TOKEN -replace -prerelease pre-release dist/
+  - ghr -u $GITHUB_USER -t $GITHUB_TOKEN v0.1.0 dist/
